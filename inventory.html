@@ -15,7 +15,7 @@
 
         function start() {
             gapi.client.init({
-                apiKey: AIzaSyB6vx_mNL4qc0JGVJR4ioUI-ojbJ2CcnIY, // Replace with your API Key
+                apiKey: AIzaSyB6vx_mNL4qc0JGVJR4ioUI-ojbJ2CcnIY
             }).then(() => {
                 gapi.client.load('sheets', 'v4', () => {
                     loadSheetData();
@@ -24,8 +24,8 @@
         }
 
         function loadSheetData() {
-            const spreadsheetId = 1038462381; // Replace with your Google Sheets ID
-            const range = 'Sheet1!A2:J'; // Adjust sheet name and range as needed
+            const spreadsheetId = 1038462381;
+            const range = 'Sheet1!A5:J'; // Adjust sheet name and range as needed
 
             gapi.client.sheets.spreadsheets.values.get({
                 spreadsheetId: spreadsheetId,
@@ -72,25 +72,60 @@
     <div id="wrapper">
         <div id="main">
             <div class="inner">
-                <table id="shirtTable">
-                    <thead>
-                        <tr>
-                            <th>Team Icon</th>
-                            <th>Team Number</th>
-                            <th>Team Name</th>
-                            <th>Size</th>
-                            <th>Type</th>
-                            <th>Year</th>
-                            <th>Tradability</th>
-                            <th>Notes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Table rows will be populated here by JavaScript -->
-                    </tbody>
-                </table>
+                <!-- Header will be loaded here -->
+                <div id="header-container"></div>
+
+                <section id="home-section">
+                    <div id="container01" class="container default">
+                        <div class="wrapper">
+                            <div class="inner">
+                                <div class="search-bar">
+                                    <input type="text" id="searchInput" placeholder="Search for teams..." onkeyup="searchTable()">
+                                </div>
+
+                                <table id="shirtTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Team Icon</th>
+                                            <th>Team Number</th>
+                                            <th>Team Name</th>
+                                            <th>Size</th>
+                                            <th>Type</th>
+                                            <th>Year</th>
+                                            <th>Tradability</th>
+                                            <th>Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Table rows will be populated here by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Footer will be loaded here -->
+                <div id="footer-container"></div>
             </div>
         </div>
     </div>
+
+    <script src="assets/main.js"></script>
+    <script>
+        // Load the header from the external file
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            });
+
+        // Load the footer from the external file
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-container').innerHTML = data;
+            });
+    </script>
 </body>
 </html>
