@@ -98,8 +98,8 @@
 		</div>
 
 		<div id="popup" class="popup">
-			<button class="close-btn" onclick="closePopup()">Close</button>
-			<div id="popup-content"></div>
+			<span class="close-btn" onclick="closePopup()">&times;</span>
+			<img id="popup-img" src="" alt="Popup Image">
 		</div>
 
 		<script src="assets/main.js"></script>
@@ -137,16 +137,10 @@
 				}
 			}
 
-			function showPopup(images) {
+			function showPopup(imageSrc) {
 				let popup = document.getElementById('popup');
-				let popupContent = document.getElementById('popup-content');
-				popupContent.innerHTML = ''; // Clear previous content
-				images.forEach(function(imageSrc) {
-					let imgElement = document.createElement('img');
-					imgElement.src = imageSrc;
-					imgElement.alt = "Photo";
-					popupContent.appendChild(imgElement);
-				});
+				let popupImg = document.getElementById('popup-img');
+				popupImg.src = imageSrc;
 				popup.style.display = 'block';
 			}
 
