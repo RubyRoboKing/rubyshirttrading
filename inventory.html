@@ -1,52 +1,50 @@
 <!DOCTYPE HTML>
 <html lang="en">
-<head>
-    <title>RubyRoboKing's Shirt Trading</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="color-scheme" content="light only" />
-    <meta name="description" content="Look at my shirt inventory and trade with me :D!" />
-    <meta property="og:site_name" content="RubyRoboKing's Shirt Trades!" />
-    <meta property="og:title" content="RubyRoboKing's Shirt Trades!" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="Look at my shirt inventory and trade with me :D!" />
-    <link href="https://fonts.googleapis.com/css2?display=swap&family=Inter:ital,wght@0,600;0,900;1,600;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:ital,wght@0,300;0,400;1,300;1,400&family=Rubik:ital,wght@0,400;0,700;1,400;1,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="assets/main.css" />
-    <link rel="stylesheet" href="assets/tablestyle.css" /> <!-- Link to tablestyle.css -->
-    <noscript><link rel="stylesheet" href="assets/noscript.css" /></noscript>
-</head>
-<body class="is-loading">
-    <div id="wrapper">
-        <div id="main">
-            <div class="inner">
-                <!-- Header will be loaded here -->
-                <div id="header-container"></div>
+	<head>
+		<title>RubyRoboKing&#039;s Shirt Trading! (copy)</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="color-scheme" content="light only" />
+		<meta name="description" content="Look at my shirt inventory and trade with me :D!" />
+		<meta property="og:site_name" content="RubyRoboKing&#039;s Shirt Trades! (copy)" />
+		<meta property="og:title" content="RubyRoboKing&#039;s Shirt Trades! (copy)" />
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="Look at my shirt inventory and trade with me :D!" />
+		<link href="https://fonts.googleapis.com/css2?display=swap&family=Inter:ital,wght@0,600;0,900;1,600;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:ital,wght@0,300;0,400;1,300;1,400&family=Rubik:ital,wght@0,400;0,700;1,400;1,700" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="assets/main.css" />
+		<link rel="stylesheet" href="assets/tablestyle.css" />
+		<noscript><link rel="stylesheet" href="assets/noscript.css" /></noscript>
+	</head>
+	<body class="is-loading">
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<!-- Header will be loaded here -->
+					<div id="header-container"></div>
 
-                <section id="table-section">
-                    <div id="container01" class="container default">
-                        <div class="wrapper">
-                            <div class="inner">
-                                <div class="search-bar">
-                                    <input type="text" id="searchInput" placeholder="Search for teams..." onkeyup="searchTable()">
-                                </div>
-
-                                <table id="shirtTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Team Icon</th>
-                                            <th>Team Number</th>
-                                            <th>Team Name</th>
-                                            <th>Size</th>
-                                            <th>Type</th>
-                                            <th>Year</th>
-                                            <th>Tradability</th>
-                                            <th>Notes</th>
-                                            <th>Photos</th>
-                                            <th>Location</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-            <tr class="highlighted"> <!-- Add "highlighted" class for new inventory -->
+					<section id="home-section">
+						<div id="container01" class="container large">
+							<div class="wrapper">
+								<div class="inner">
+									<div class="search-bar">
+										<input type="text" id="searchInput" placeholder="Search for teams..." onkeyup="searchTable()">
+									</div>
+									<table id="shirtTable">
+										<thead>
+											<tr>
+												<th>Team Icon</th>
+												<th>Team Number</th>
+												<th>Team Name</th>
+												<th>Size</th>
+												<th>Type</th>
+												<th>Year</th>
+												<th>Tradability</th>
+												<th>Notes</th>
+												<th>Photos</th>
+												<th>Location</th>
+											</tr>
+										</thead>
+										<tr class="highlighted"> <!-- Add "highlighted" class for new inventory -->
                 <td class="team-icon"><img src="https://media.discordapp.net/attachments/1275539122710253674/1275539187076173894/b43ac29e7e274c0909623084777f3c94.jpg?ex=66c83c30&is=66c6eab0&hm=00f64894bd9f928164dc6ef841e6dcadb83c0c77031a9866b00a11abf95fce84&=&format=webp&width=808&height=574" alt="Team 1 Icon" width="50"></td>
                 <td>125</td>
                 <td>The Nutrons</td>
@@ -86,74 +84,75 @@
                 <td>New York, NY</td>
             </tr>
                                         <!-- Repeat <tr> blocks for more rows -->
-                                    </tbody>
-                                </table>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</section>
 
-                                <div id="popup" class="popup">
-                                    <button class="close-btn" onclick="closePopup()">Close</button>
-                                    <div id="popup-content"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+					<!-- Footer will be loaded here -->
+					<div id="footer-container"></div>
+				</div>
+			</div>
+		</div>
 
-                <!-- Footer will be loaded here -->
-                <div id="footer-container"></div>
-            </div>
-        </div>
-    </div>
-    <script src="assets/main.js"></script>
-    <script>
-        // Load the header from the external file
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-            });
+		<div id="popup" class="popup">
+			<button class="close-btn" onclick="closePopup()">Close</button>
+			<div id="popup-content"></div>
+		</div>
 
-        // Load the footer from the external file
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-container').innerHTML = data;
-            });
+		<script src="assets/main.js"></script>
+		<script>
+			// Load the header from the external file
+			fetch('header.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('header-container').innerHTML = data;
+				});
 
-        function searchTable() {
-            let input = document.getElementById('searchInput');
-            let filter = input.value.toUpperCase();
-            let table = document.getElementById('shirtTable');
-            let tr = table.getElementsByTagName('tr');
+			// Load the footer from the external file
+			fetch('footer.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('footer-container').innerHTML = data;
+				});
 
-            for (let i = 1; i < tr.length; i++) {
-                let tds = tr[i].getElementsByTagName('td');
-                let rowContainsFilter = false;
-                for (let j = 1; j < tds.length - 2; j++) {
-                    if (tds[j].textContent.toUpperCase().indexOf(filter) > -1) {
-                        rowContainsFilter = true;
-                        break;
-                    }
-                }
-                tr[i].style.display = rowContainsFilter ? '' : 'none';
-            }
-        }
+			function searchTable() {
+				let input = document.getElementById('searchInput');
+				let filter = input.value.toUpperCase();
+				let table = document.getElementById('shirtTable');
+				let tr = table.getElementsByTagName('tr');
 
-        function showPopup(images) {
-            let popup = document.getElementById('popup');
-            let popupContent = document.getElementById('popup-content');
-            popupContent.innerHTML = ''; // Clear previous content
-            images.forEach(function(imageSrc) {
-                let imgElement = document.createElement('img');
-                imgElement.src = imageSrc;
-                imgElement.alt = "Photo";
-                popupContent.appendChild(imgElement);
-            });
-            popup.style.display = 'block';
-        }
+				for (let i = 1; i < tr.length; i++) {
+					let tds = tr[i].getElementsByTagName('td');
+					let rowContainsFilter = false;
+					for (let j = 1; j < tds.length - 2; j++) { // Skip the team icon, photos, and location columns
+						if (tds[j].textContent.toUpperCase().indexOf(filter) > -1) {
+							rowContainsFilter = true;
+							break;
+						}
+					}
+					tr[i].style.display = rowContainsFilter ? '' : 'none';
+				}
+			}
 
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-    </script>
-</body>
+			function showPopup(images) {
+				let popup = document.getElementById('popup');
+				let popupContent = document.getElementById('popup-content');
+				popupContent.innerHTML = ''; // Clear previous content
+				images.forEach(function(imageSrc) {
+					let imgElement = document.createElement('img');
+					imgElement.src = imageSrc;
+					imgElement.alt = "Photo";
+					popupContent.appendChild(imgElement);
+				});
+				popup.style.display = 'block';
+			}
+
+			function closePopup() {
+				document.getElementById('popup').style.display = 'none';
+			}
+		</script>
+	</body>
 </html>
