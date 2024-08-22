@@ -15,7 +15,7 @@
 
         function start() {
             gapi.client.init({
-                apiKey: AIzaSyB6vx_mNL4qc0JGVJR4ioUI-ojbJ2CcnIY
+                apiKey: 'AIzaSyB6vx_mNL4qc0JGVJR4ioUI-ojbJ2CcnIY'
             }).then(() => {
                 gapi.client.load('sheets', 'v4', () => {
                     loadSheetData();
@@ -24,7 +24,7 @@
         }
 
         function loadSheetData() {
-            const spreadsheetId = /1KCXlG19AFMzhCz5GbA0IZQOy4I3LXENinWHzCA-gcFY;/
+            const spreadsheetId = '1KCXlG19AFMzhCz5GbA0IZQOy4I3LXENinWHzCA-gcFY';
             const range = 'Sheet1!A5:J'; // Adjust sheet name and range as needed
 
             gapi.client.sheets.spreadsheets.values.get({
