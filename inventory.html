@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+    <title>Inventory</title>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width,initial-scale=1' />
+    <link rel='stylesheet' href='assets/main.css' />
+</head>
+<body class="is-loading">
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<!-- Header will be loaded here -->
+					<div id="header-container"></div>
+
+    <section id="sheet-section">
+        <h2 id="text02">INVENTORY</h2>
+        <div id="container05" class="container default">
+            <div class="wrapper">
+                <div class="inner">
+                    <hr id="divider03">
+                    <div id="embed01">
+                        <!-- Insert your table content here -->
+                        <!-- This content should be optimized as much as possible -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   					<!-- Footer will be loaded here -->
+					<div id="footer-container"></div>
+				</div>
+			</div>
+		</div>
+		<script src="assets/main.js"></script>
+		<script>
+			// Load the header from the external file
+			fetch('header.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('header-container').innerHTML = data;
+				});
+
+			// Load the footer from the external file
+			fetch('footer.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('footer-container').innerHTML = data;
+				});
+		</script>
+</body>
+</html>
