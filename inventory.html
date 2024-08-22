@@ -1,152 +1,96 @@
 <!DOCTYPE HTML>
 <html lang="en">
-	<head>
-		<title>RubyRoboKing&#039;s Shirt Trading! (copy)</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<meta name="color-scheme" content="light only" />
-		<meta name="description" content="Look at my shirt inventory and trade with me :D!" />
-		<meta property="og:site_name" content="RubyRoboKing&#039;s Shirt Trades! (copy)" />
-		<meta property="og:title" content="RubyRoboKing&#039;s Shirt Trades! (copy)" />
-		<meta property="og:type" content="website" />
-		<meta property="og:description" content="Look at my shirt inventory and trade with me :D!" />
-		<link href="https://fonts.googleapis.com/css2?display=swap&family=Inter:ital,wght@0,600;0,900;1,600;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:ital,wght@0,300;0,400;1,300;1,400&family=Rubik:ital,wght@0,400;0,700;1,400;1,700" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="assets/main.css" />
-		<link rel="stylesheet" href="assets/tablestyle.css" />
-		<noscript><link rel="stylesheet" href="assets/noscript.css" /></noscript>
-	</head>
-	<body class="is-loading">
-		<div id="wrapper">
-			<div id="main">
-				<div class="inner">
-					<!-- Header will be loaded here -->
-					<div id="header-container"></div>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inventory Table</title>
+    <link href="https://fonts.googleapis.com/css2?display=swap&family=Lexend:wght@400;700&family=Rubik:wght@400;700" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/main.css" />
+    <link rel="stylesheet" href="assets/tablestyle.css" />
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        function init() {
+            gapi.load('client', start);
+        }
 
-					<section id="home-section">
-						<div id="container01" class="container large">
-							<div class="wrapper">
-								<div class="inner">
-									<div class="search-bar">
-										<input type="text" id="searchInput" placeholder="Search for teams..." onkeyup="searchTable()">
-									</div>
-									<table id="shirtTable">
-										<thead>
-											<tr>
-												<th>Team Icon</th>
-												<th>Team Number</th>
-												<th>Team Name</th>
-												<th>Size</th>
-												<th>Type</th>
-												<th>Year</th>
-												<th>Tradability</th>
-												<th>Notes</th>
-												<th>Photos</th>
-												<th>Location</th>
-											</tr>
-										</thead>
-										<tr class="highlighted"> <!-- Add "highlighted" class for new inventory -->
-                <td class="team-icon"><img src="https://media.discordapp.net/attachments/1275539122710253674/1275539187076173894/b43ac29e7e274c0909623084777f3c94.jpg?ex=66c83c30&is=66c6eab0&hm=00f64894bd9f928164dc6ef841e6dcadb83c0c77031a9866b00a11abf95fce84&=&format=webp&width=808&height=574" alt="Team 1 Icon" width="50"></td>
-                <td>125</td>
-                <td>The Nutrons</td>
-                <td>Large</td>
-                <td>T-shirt</td>
-                <td>2023</td>
-                <td>High</td>
-                <td class="notes">Limited edition</td>
-                <td class="photos">
-                    <div class="dropdown">
-                        <button>Show Photos</button>
-                        <div class="dropdown-content">
-                            <img src="https://media.discordapp.net/attachments/1275539122710253674/1275539187076173894/b43ac29e7e274c0909623084777f3c94.jpg?ex=66c83c30&is=66c6eab0&hm=00f64894bd9f928164dc6ef841e6dcadb83c0c77031a9866b00a11abf95fce84&=&format=webp&width=808&height=574" alt="Photo 1" onclick="showPopup(['photo1.jpg', 'photo2.jpg'])">
-                            <img src="https://media.discordapp.net/attachments/1275539122710253674/1275539187076173894/b43ac29e7e274c0909623084777f3c94.jpg?ex=66c83c30&is=66c6eab0&hm=00f64894bd9f928164dc6ef841e6dcadb83c0c77031a9866b00a11abf95fce84&=&format=webp&width=808&height=574" alt="Photo 2" onclick="showPopup(['photo1.jpg', 'photo2.jpg'])">
-                        </div>
-                    </div>
-                </td>
-                <td>New York, NY</td>
-            </tr>
-                <td class="team-icon"><img src="https://media.discordapp.net/attachments/1275539122710253674/1275539187076173894/b43ac29e7e274c0909623084777f3c94.jpg?ex=66c83c30&is=66c6eab0&hm=00f64894bd9f928164dc6ef841e6dcadb83c0c77031a9866b00a11abf95fce84&=&format=webp&width=808&height=574" alt="Team 1 Icon" width="50"></td>
-                <td>67</td>
-                <td>The HOT Team</td>
-                <td>M</td>
-                <td>T-shirt</td>
-                <td>2002</td>
-                <td>Medium</td>
-                <td class="notes">Limited edition</td>
-                <td class="photos">
-                    <div class="dropdown">
-                        <button>Show Photos</button>
-                        <div class="dropdown-content">
-                            <img src="https://media.discordapp.net/attachments/1275539122710253674/1275539187076173894/b43ac29e7e274c0909623084777f3c94.jpg?ex=66c83c30&is=66c6eab0&hm=00f64894bd9f928164dc6ef841e6dcadb83c0c77031a9866b00a11abf95fce84&=&format=webp&width=808&height=574" alt="Photo 1" onclick="showPopup(['photo1.jpg', 'photo2.jpg'])">
-                            <img src="https://media.discordapp.net/attachments/1275539122710253674/1275539187076173894/b43ac29e7e274c0909623084777f3c94.jpg?ex=66c83c30&is=66c6eab0&hm=00f64894bd9f928164dc6ef841e6dcadb83c0c77031a9866b00a11abf95fce84&=&format=webp&width=808&height=574" alt="Photo 2" onclick="showPopup(['photo1.jpg', 'photo2.jpg'])">
-                        </div>
-                    </div>
-                </td>
-                <td>New York, NY</td>
-            </tr>
-                                        <!-- Repeat <tr> blocks for more rows -->
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</section>
+        function start() {
+            gapi.client.init({
+                apiKey: AIzaSyB6vx_mNL4qc0JGVJR4ioUI-ojbJ2CcnIY, // Replace with your API Key
+            }).then(() => {
+                gapi.client.load('sheets', 'v4', () => {
+                    loadSheetData();
+                });
+            });
+        }
 
-					<!-- Footer will be loaded here -->
-					<div id="footer-container"></div>
-				</div>
-			</div>
-		</div>
+        function loadSheetData() {
+            const spreadsheetId = 1038462381; // Replace with your Google Sheets ID
+            const range = 'Sheet1!A2:J'; // Adjust sheet name and range as needed
 
-		<div id="popup" class="popup">
-			<span class="close-btn" onclick="closePopup()">&times;</span>
-			<img id="popup-img" src="" alt="Popup Image">
-		</div>
+            gapi.client.sheets.spreadsheets.values.get({
+                spreadsheetId: spreadsheetId,
+                range: range,
+            }).then(response => {
+                const data = response.result.values;
+                populateTable(data);
+            }).catch(error => {
+                console.error('Error fetching sheet data:', error);
+            });
+        }
 
-		<script src="assets/main.js"></script>
-		<script>
-			// Load the header from the external file
-			fetch('header.html')
-				.then(response => response.text())
-				.then(data => {
-					document.getElementById('header-container').innerHTML = data;
-				});
+        function populateTable(data) {
+            const table = document.getElementById('shirtTable').getElementsByTagName('tbody')[0];
 
-			// Load the footer from the external file
-			fetch('footer.html')
-				.then(response => response.text())
-				.then(data => {
-					document.getElementById('footer-container').innerHTML = data;
-				});
+            data.forEach(row => {
+                if (row[0]) { // Check if the row has a team number
+                    const sizeMap = {
+                        'S': 'Small', 'M': 'Medium', 'L': 'Large', 'XL': 'X-Large',
+                        'XXL': '2XL', 'XXXL': '3XL', 'XXXXL': '4XL', 'XXXXX': '5XL', 'XXXXXX': '6XL'
+                    };
+                    const size = sizeMap[row[3]] || row[3];
+                    const highlightedClass = row[9] === 'TRUE' ? 'highlighted' : '';
 
-			function searchTable() {
-				let input = document.getElementById('searchInput');
-				let filter = input.value.toUpperCase();
-				let table = document.getElementById('shirtTable');
-				let tr = table.getElementsByTagName('tr');
+                    const newRow = table.insertRow();
+                    newRow.className = highlightedClass;
 
-				for (let i = 1; i < tr.length; i++) {
-					let tds = tr[i].getElementsByTagName('td');
-					let rowContainsFilter = false;
-					for (let j = 1; j < tds.length - 2; j++) { // Skip the team icon, photos, and location columns
-						if (tds[j].textContent.toUpperCase().indexOf(filter) > -1) {
-							rowContainsFilter = true;
-							break;
-						}
-					}
-					tr[i].style.display = rowContainsFilter ? '' : 'none';
-				}
-			}
+                    newRow.insertCell().innerHTML = `<img src="${row[1]}" alt="Team Icon" width="50">`;
+                    newRow.insertCell().textContent = row[0];
+                    newRow.insertCell().textContent = row[2];
+                    newRow.insertCell().textContent = size;
+                    newRow.insertCell().textContent = row[4];
+                    newRow.insertCell().textContent = row[5];
+                    newRow.insertCell().textContent = row[7];
+                    newRow.insertCell().textContent = row[8];
+                }
+            });
+        }
 
-			function showPopup(imageSrc) {
-				let popup = document.getElementById('popup');
-				let popupImg = document.getElementById('popup-img');
-				popupImg.src = imageSrc;
-				popup.style.display = 'block';
-			}
-
-			function closePopup() {
-				document.getElementById('popup').style.display = 'none';
-			}
-		</script>
-	</body>
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <table id="shirtTable">
+                    <thead>
+                        <tr>
+                            <th>Team Icon</th>
+                            <th>Team Number</th>
+                            <th>Team Name</th>
+                            <th>Size</th>
+                            <th>Type</th>
+                            <th>Year</th>
+                            <th>Tradability</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be populated here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
