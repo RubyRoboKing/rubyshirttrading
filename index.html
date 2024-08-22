@@ -1,15 +1,15 @@
 <!DOCTYPE HTML>
 <html lang="en">
 	<head>
-		<title>RubyRoboKing&#039;s Commissions! (copy)</title>
+		<title>RubyRoboKing&#039;s Shirt Trading! (copy)</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<meta name="color-scheme" content="light only" />
-		<meta name="description" content="All-You-Need-To-Know about commissioning me!" />
-		<meta property="og:site_name" content="RubyRoboKing&#039;s Commissions! (copy)" />
-		<meta property="og:title" content="RubyRoboKing&#039;s Commissions! (copy)" />
+		<meta name="description" content="Look at my shirt inventory and trade with me :D!" />
+		<meta property="og:site_name" content="RubyRoboKing&#039;s Shirt Trades! (copy)" />
+		<meta property="og:title" content="RubyRoboKing&#039;s Shirt Trades! (copy)" />
 		<meta property="og:type" content="website" />
-		<meta property="og:description" content="All-You-Need-To-Know about commissioning me!" />
+		<meta property="og:description" content="Look at my shirt inventory and trade with me :D!" />
 		<link href="https://fonts.googleapis.com/css2?display=swap&family=Inter:ital,wght@0,600;0,900;1,600;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:ital,wght@0,300;0,400;1,300;1,400&family=Rubik:ital,wght@0,400;0,700;1,400;1,700" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="assets/main.css" />
 		<noscript><link rel="stylesheet" href="assets/noscript.css" /></noscript>
@@ -30,22 +30,9 @@
 							</div>
 						</div>
 					</section>
-					<footer id="footer">
-						<hr id="divider02">
-						<ul id="icons03" class="icons">
-							<li>
-								<a class="n01" href="https://twitter.com">
-									<svg aria-labelledby="icon-title"><title id="icon-title">Twitter</title><use xlink:href="assets/icons.svg#twitter"></use></svg>
-									<span class="label">Twitter</span>
-								</a>
-							</li><li>
-								<a class="n02" href="https://instagram.com">
-									<svg aria-labelledby="icon-title"><title id="icon-title">Instagram</title><use xlink:href="assets/icons.svg#instagram"></use></svg>
-									<span class="label">Instagram</span>
-								</a>
-							</li>
-						</ul>
-					</footer>
+					
+					<!-- Footer will be loaded here -->
+					<div id="footer-container"></div>
 				</div>
 			</div>
 		</div>
@@ -56,6 +43,13 @@
 				.then(response => response.text())
 				.then(data => {
 					document.getElementById('header-container').innerHTML = data;
+				});
+
+			// Load the footer from the external file
+			fetch('footer.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('footer-container').innerHTML = data;
 				});
 		</script>
 	</body>
