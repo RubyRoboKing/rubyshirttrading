@@ -60,13 +60,90 @@
                     newRow.insertCell().textContent = row[4];
                     newRow.insertCell().textContent = row[5];
                     newRow.insertCell().textContent = row[7];
+                    newRow.insertCell().innerHTML = `<div class="photo-container">
+                        <button onclick="showPopup('${row[10]}', '${row[11]}')">Show Photos</button>
+                    </div>`;
                     newRow.insertCell().textContent = row[8];
                 }
             });
         }
 
+        function showPopup(photoUrl1, photoUrl2) {
+            const popup = document.getElementById('popup');
+            const popupContent = document.getElementById('popup-content');
+            popupContent.innerHTML = ''; // Clear previous content
+
+            if (photoUrl1) {
+                const imgElement1 = document.createElement('img');
+                imgElement1.src = photoUrl1;
+                imgElement1.alt = "Photo 1";
+                popupContent.appendChild(imgElement1);
+            }
+
+            if (photoUrl2) {
+                const imgElement2 = document.createElement('img');
+                imgElement2.src = photoUrl2;
+                imgElement2.alt = "Photo 2";
+                popupContent.appendChild(imgElement2);
+            }
+
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
         window.onload = init;
     </script>
+    <style>
+        .photo-container {
+            text-align: center;
+        }
+
+        .photo-container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .photo-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 2px solid #ccc;
+            z-index: 100;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            max-width: 90%;
+            max-height: 80%;
+            overflow: auto;
+        }
+
+        .popup img {
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        .popup .close-btn {
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div id="wrapper">
@@ -93,6 +170,7 @@
                                             <th>Type</th>
                                             <th>Year</th>
                                             <th>Tradability</th>
+                                            <th>Photos</th>
                                             <th>Notes</th>
                                         </tr>
                                     </thead>
@@ -109,6 +187,11 @@
                 <div id="footer-container"></div>
             </div>
         </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <button class="close-btn" onclick="closePopup()">Close</button>
+        <div id="popup-content"></div>
     </div>
 
     <script src="assets/main.js"></script>
