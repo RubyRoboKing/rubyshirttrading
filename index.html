@@ -13,16 +13,14 @@
 		<link href="https://fonts.googleapis.com/css2?display=swap&family=Inter:ital,wght@0,600;0,900;1,600;1,900&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:ital,wght@0,300;0,400;1,300;1,400&family=Rubik:ital,wght@0,400;0,700;1,400;1,700" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="assets/main.css" />
 		<noscript><link rel="stylesheet" href="assets/noscript.css" /></noscript>
-	<head>
-    <title></title>
-    <script src="//code.jquery.com/jquery.min.js"></script>
-    <script> 
-        $(function(){
-          $("#header").load("header.html"); 
-          $("#footer").load("footer.html"); 
-        });
-    </script> 
-</head>
+	</head>
+	<body class="is-loading">
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<!-- Header will be loaded here -->
+					<div id="header-container"></div>
+
 					<section id="home-section">
 						<div id="container01" class="container default">
 							<div class="wrapper">
@@ -52,5 +50,13 @@
 			</div>
 		</div>
 		<script src="assets/main.js"></script>
+		<script>
+			// Load the header from the external file
+			fetch('header.html')
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById('header-container').innerHTML = data;
+				});
+		</script>
 	</body>
 </html>
