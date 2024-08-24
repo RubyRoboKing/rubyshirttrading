@@ -1,209 +1,70 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Inventory Table</title>
-    <link href="https://fonts.googleapis.com/css2?display=swap&family=Lexend:wght@400;700&family=Rubik:wght@400;700" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/main.css" />
-    <link rel="stylesheet" href="assets/tablestyle.css" />
+    <title>Shirt Trading Inventory</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="assets/tablestyle.css">
     <script src="https://apis.google.com/js/api.js"></script>
-    <script>
-        function init() {
-            gapi.load('client', start);
-        }
-
-        function start() {
-            gapi.client.init({
-                apiKey: 'AIzaSyB6vx_mNL4qc0JGVJR4ioUI-ojbJ2CcnIY'
-            }).then(() => {
-                gapi.client.load('sheets', 'v4', () => {
-                    loadSheetData();
-                });
-            });
-        }
-
-        function loadSheetData() {
-            const spreadsheetId = '1KCXlG19AFMzhCz5GbA0IZQOy4I3LXENinWHzCA-gcFY';
-            const range = 'Sheet1!A5:J'; // Adjust sheet name and range as needed
-
-            gapi.client.sheets.spreadsheets.values.get({
-                spreadsheetId: spreadsheetId,
-                range: range,
-            }).then(response => {
-                const data = response.result.values;
-                populateTable(data);
-            }).catch(error => {
-                console.error('Error fetching sheet data:', error);
-            });
-        }
-
-        function populateTable(data) {
-            const table = document.getElementById('shirtTable').getElementsByTagName('tbody')[0];
-
-            data.forEach(row => {
-                if (row[0]) { // Check if the row has a team number
-                    const sizeMap = {
-                        'S': 'Small', 'M': 'Medium', 'L': 'Large', 'XL': 'X-Large',
-                        'XXL': '2XL', 'XXXL': '3XL', 'XXXXL': '4XL', 'XXXXX': '5XL', 'XXXXXX': '6XL'
-                    };
-                    const size = sizeMap[row[3]] || row[3];
-                    const highlightedClass = row[9] === 'TRUE' ? 'highlighted' : '';
-
-                    const newRow = table.insertRow();
-                    newRow.className = highlightedClass;
-
-                    newRow.insertCell().innerHTML = `<img src="${row[1]}" alt="Team Icon" width="50">`;
-                    newRow.insertCell().textContent = row[0];
-                    newRow.insertCell().textContent = row[2];
-                    newRow.insertCell().textContent = size;
-                    newRow.insertCell().textContent = row[4];
-                    newRow.insertCell().textContent = row[5];
-                    newRow.insertCell().textContent = row[7];
-                    newRow.insertCell().innerHTML = `<div class="photo-container">
-                        <button onclick="showPopup('${row[10]}', '${row[11]}')">Show Photos</button>
-                    </div>`;
-                    newRow.insertCell().textContent = row[8];
-                }
-            });
-        }
-
-        function showPopup(photoUrl1, photoUrl2) {
-            const popup = document.getElementById('popup');
-            const popupContent = document.getElementById('popup-content');
-            popupContent.innerHTML = ''; // Clear previous content
-
-            if (photoUrl1) {
-                const imgElement1 = document.createElement('img');
-                imgElement1.src = photoUrl1;
-                imgElement1.alt = "Photo 1";
-                popupContent.appendChild(imgElement1);
-            }
-
-            if (photoUrl2) {
-                const imgElement2 = document.createElement('img');
-                imgElement2.src = photoUrl2;
-                imgElement2.alt = "Photo 2";
-                popupContent.appendChild(imgElement2);
-            }
-
-            popup.style.display = 'block';
-        }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-
-        window.onload = init;
-    </script>
-    <style>
-        .photo-container {
-            text-align: center;
-        }
-
-        .photo-container button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .photo-container button:hover {
-            background-color: #0056b3;
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border: 2px solid #ccc;
-            z-index: 100;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            max-width: 90%;
-            max-height: 80%;
-            overflow: auto;
-        }
-
-        .popup img {
-            max-width: 100%;
-            margin: 10px 0;
-        }
-
-        .popup .close-btn {
-            background-color: #333;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
 </head>
-<body>
+<body class="is-loading">
+
     <div id="wrapper">
         <div id="main">
             <div class="inner">
-                <!-- Header will be loaded here -->
+
+                <!-- Header -->
                 <div id="header-container"></div>
 
-                <section id="home-section">
-                    <div id="container01" class="container default">
-                        <div class="wrapper">
-                            <div class="inner">
-                                <div class="search-bar">
-                                    <input type="text" id="searchInput" placeholder="Search for teams..." onkeyup="searchTable()">
-                                </div>
-
-                                <table id="shirtTable">
-                                    <thead>
-                                        <tr>
-                                            <th>Team Icon</th>
-                                            <th>Team Number</th>
-                                            <th>Team Name</th>
-                                            <th>Size</th>
-                                            <th>Type</th>
-                                            <th>Year</th>
-                                            <th>Tradability</th>
-                                            <th>Photos</th>
-                                            <th>Notes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Table rows will be populated here by JavaScript -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                <!-- Search Bar -->
+                <section id="search-section">
+                    <div class="container">
+                        <input type="text" id="search-bar" placeholder="Search...">
                     </div>
                 </section>
-                
-                <!-- Footer will be loaded here -->
+
+                <!-- Table -->
+                <section id="table-section">
+                    <div class="container">
+                        <table id="inventory-table">
+                            <thead>
+                                <tr>
+                                    <th>TEAM ICON</th>
+                                    <th>TEAM NUMBER</th>
+                                    <th>TEAM NAME</th>
+                                    <th>SIZE</th>
+                                    <th>TYPE</th>
+                                    <th>YEAR</th>
+                                    <th>TRADABILITY</th>
+                                    <th>PHOTOS</th>
+                                    <th>NOTES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Data will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Footer -->
                 <div id="footer-container"></div>
+
             </div>
         </div>
     </div>
 
-    <div id="popup" class="popup">
-        <button class="close-btn" onclick="closePopup()">Close</button>
-        <div id="popup-content"></div>
-    </div>
-
     <script src="assets/main.js"></script>
+    <script src="assets/inventory.js"></script>
     <script>
-        // Load the header from the external file
+        // Load the header and footer from external files
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
             });
 
-        // Load the footer from the external file
         fetch('footer.html')
             .then(response => response.text())
             .then(data => {
