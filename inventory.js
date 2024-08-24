@@ -4,11 +4,11 @@ function initGoogleSheetsAPI() {
 
 function loadSheetsAPI() {
     gapi.client.init({
-        apiKey: 'YOUR_API_KEY',
+        apiKey: 'AIzaSyB6vx_mNL4qc0JGVJR4ioUI-ojbJ2CcnIY',
         discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
     }).then(function () {
         return gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: 'YOUR_SPREADSHEET_ID',
+            spreadsheetId: '1KCXlG19AFMzhCz5GbA0IZQOy4I3LXENinWHzCA-gcFY',
             range: 'Sheet1!A5:L',
         });
     }).then(response => {
