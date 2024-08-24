@@ -7,49 +7,65 @@
     <link rel="stylesheet" href="assets/main.css">
     <link rel="stylesheet" href="assets/tablestyle.css">
     <script src="https://apis.google.com/js/api.js"></script>
+    <style>
+        /* Optional: Define a CSS class to make container01 wider */
+        .wider-container {
+            width: 1200px; /* Adjust the width as needed */
+            max-width: 100%; /* Ensures responsiveness */
+            margin: 0 auto; /* Centers the container */
+        }
+    </style>
 </head>
 <body class="is-loading">
-		<div id="wrapper">
-			<div id="main">
-				<div class="inner">
-					<!-- Header will be loaded here -->
-					<div id="header-container"></div>
+    <div id="wrapper">
+        <div id="main">
+            <div class="inner">
+                <!-- Header will be loaded here -->
+                <div id="header-container"></div>
 
-					<section id="home-section">
-						<div id="container01" class="container default">
-							<div class="wrapper">
-								<div class="inner">
-                    <!-- Search Bar -->
-                    <section id="search-section">
-                        <input type="text" id="search-bar" placeholder="Search...">
-                    </section>
+                <section id="home-section">
+                    <!-- 
+                        1. Increased the width of container01 by adding the 'wider-container' class.
+                        2. Moved the footer-container outside of container01.
+                    -->
+                    <div id="container01" class="container default wider-container"> <!-- Added 'wider-container' class -->
+                        <div class="wrapper">
+                            <div class="inner">
+                                <!-- Search Bar -->
+                                <section id="search-section">
+                                    <input type="text" id="search-bar" placeholder="Search...">
+                                </section>
 
-                    <!-- Table -->
-                    <section id="table-section">
-                        <table id="inventory-table">
-                            <thead>
-                                <tr>
-                                    <th>TEAM ICON</th>
-                                    <th>TEAM NUMBER</th>
-                                    <th>TEAM NAME</th>
-                                    <th>SIZE</th>
-                                    <th>TYPE</th>
-                                    <th>YEAR</th>
-                                    <th>TRADABILITY</th>
-                                    <th>PHOTOS</th>
-                                    <th>NOTES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Data will be inserted here -->
-                            </tbody>
-                        </table>
-                    </section>
-                </div>
+                                <!-- Table -->
+                                <section id="table-section">
+                                    <table id="inventory-table">
+                                        <thead>
+                                            <tr>
+                                                <th>TEAM ICON</th>
+                                                <th>TEAM NUMBER</th>
+                                                <th>TEAM NAME</th>
+                                                <th>SIZE</th>
+                                                <th>TYPE</th>
+                                                <th>YEAR</th>
+                                                <th>TRADABILITY</th>
+                                                <th>PHOTOS</th>
+                                                <th>NOTES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Data will be inserted here -->
+                                        </tbody>
+                                    </table>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Footer -->
-                <div id="footer-container"></div>
-
+                    <!-- 
+                        Moved the footer-container outside of container01 to ensure it's not within the table's container.
+                    -->
+                    <div id="footer-container"></div>
+                </section>
             </div>
         </div>
     </div>
