@@ -37,7 +37,7 @@ function populateTable(data) {
         // Team Icon
         const iconCell = document.createElement('td');
         const iconImg = document.createElement('img');
-        iconImg.src = row[1];
+        iconImg.src = row[2];
         iconImg.alt = 'Team Icon';
         iconImg.style.width = '50px';
         iconCell.appendChild(iconImg);
