@@ -9,7 +9,7 @@ function loadSheetsAPI() {
     }).then(function () {
         return gapi.client.sheets.spreadsheets.values.get({
             spreadsheetId: '1KCXlG19AFMzhCz5GbA0IZQOy4I3LXENinWHzCA-gcFY',
-            range: 'Sheet1!A5:L',
+            range: 'Sheet1!A2:L3111',
         });
     }).then(response => {
         const data = response.result.values;
